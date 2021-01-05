@@ -1,6 +1,8 @@
+using FluentValidator;
+
 namespace BaltaStore.Domain.StoreContext.ValueObjects
 {
-    public class Document
+    public class Document : Notifiable
     {
         public Document(string number)
         {

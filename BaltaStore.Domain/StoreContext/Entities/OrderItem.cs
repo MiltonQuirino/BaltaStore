@@ -1,6 +1,8 @@
+using FluentValidator;
+
 namespace BaltaStore.Domain.StoreContext.Entities
 {
-    public class OrderItem
+    public class OrderItem : Notifiable
     {
         public OrderItem(Product product, decimal quantity)
         {
@@ -8,8 +10,8 @@ namespace BaltaStore.Domain.StoreContext.Entities
             Quantity = quantity;
             Price = product.Price;
 
-            // if (product.QuantityOnHand < quantity)
-            //     AddNotification("Quantity", "Produto fora de estoque");
+            if (product.QuantityOnHand < quantity)
+                AddNotification("Quantity", "Produto fora de estoque");
 
             // product.DecreaseQuantity(quantity);
         }
